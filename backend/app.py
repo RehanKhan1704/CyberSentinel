@@ -557,6 +557,8 @@ def scan_qr():
         print(f"QR scan error: {e}")
         return jsonify({"error": str(e)}), 500
 
+import os
+
 # START SERVER
 if __name__ == "__main__":
     print("\n" + "="*60)
@@ -565,7 +567,14 @@ if __name__ == "__main__":
     print(" ML Model + VirusTotal + Content Analysis")
     print(" User Authentication Enabled")
     print(" Database Integration Active")
-    print(" Running on http://localhost:5000")
     print("="*60 + "\n")
+
+    port = int(os.environ.get("PORT", 5000))
+
+    print(f" Running on 0.0.0.0:{port}")
     
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(
+        debug=False,
+        host="0.0.0.0",
+        port=port
+    )
