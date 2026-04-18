@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { AlertTriangle, CheckCircle, Flag, Send, Info, Target, Shield, Eye, Bug, Zap } from 'lucide-react';
 import toast from 'react-hot-toast';
 
-import Button from '../UI/Button';
-import Input from '../UI/Input';
-import Card from '../UI/Card';
-import { submitFeedback } from '../../services/api';
-import { validateURL } from '../../utils/helpers';
+import Button from '../UI/Button.jsx';
+import Input from '../UI/Input.jsxx';
+import Card from '../UI/Card.jsx';
+import { submitFeedback } from '../../services/api,js';
+import { validateURL } from '../../utils/helpers.js';
 
 export default function FeedbackForm() {
   const [formData, setFormData] = useState({
