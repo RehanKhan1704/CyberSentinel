@@ -1,4 +1,4 @@
-import cv2
+'''import cv2
 from pyzbar import pyzbar
 from PIL import Image
 import numpy as np
