@@ -49,7 +49,7 @@ export default function QRScanner() {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/qr/scan', formData, {
+      const response = await axios.post('https://cybersentinel-3.onrender.com/api/qr/scan', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
