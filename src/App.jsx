@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import Navigation from './components/UI/Navigation';
-import URLAnalyzer from './components/features/URLAnalyzer';
-import FeedbackForm from './components/features/FeedbackForm';
+import Navigation from './components/UI/Navigation.jsx';
+import URLAnalyzer from './components/features/URLAnalyzer.jsx';
+import FeedbackForm from './components/features/FeedbackForm.jsx';
 import './App.css';
-import QRScanner from './components/features/QRScanner';
+import QRScanner from './components/features/QRScanner.jsx';
 // import EmailScanner from './components/features/EmailScanner';
-import Dashboard from './components/features/Dashboard';
-import AdminFeedback from './components/features/AdminFeedback';
-import Login from './components/auth/Login'
-import Register from './components/auth/Register';
+import Dashboard from './components/features/Dashboard.jsx';
+import AdminFeedback from './components/features/AdminFeedback.jsx';
+import Login from './components/auth/Login.jsx'
+import Register from './components/auth/Register.jsx';
 
 
 
