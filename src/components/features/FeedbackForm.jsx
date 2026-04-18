@@ -3,7 +3,7 @@ import { AlertTriangle, CheckCircle, Flag, Send, Info, Target, Shield, Eye, Bug,
 import toast from 'react-hot-toast';
 
 import Button from '../UI/Button.jsx';
-import Input from '../UI/Input.jsxx';
+import Input from '../UI/Input.jsx';
 import Card from '../UI/Card.jsx';
 import { submitFeedback } from '../../services/api,js';
 import { validateURL } from '../../utils/helpers.js';
