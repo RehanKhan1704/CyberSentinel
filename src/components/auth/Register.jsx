@@ -42,7 +42,7 @@ export default function Register() {
         password: formData.password,
       };
 
-      const response = await axios.post('http://localhost:5000/api/auth/register', payload);
+      const response = await axios.post('https://cybersentinel-3.onrender.com/api/auth/register', payload);
 
       const { access_token, user } = response.data;
 
