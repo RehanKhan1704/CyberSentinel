@@ -30,7 +30,7 @@ export default function URLAnalyzer() {
     setResult(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/analyze', { url });
+      const response = await axios.post('https://cybersentinel-3.onrender.com/analyze', { url });
       setResult(response.data);
       // Save to recent searches
       const updated = [url, ...recentSearches.filter(u => u !== url)].slice(0, 5);
