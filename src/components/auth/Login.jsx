@@ -25,7 +25,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('https://cybersentinel-3.onrender.com/api/auth/login', formData);
 
       const { access_token, user } = response.data;
 
