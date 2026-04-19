@@ -6,10 +6,9 @@ class QRCodeScanner:
     def __init__(self):
         self.detector = cv2.QRCodeDetector()
 
-    def scan_qr_code(self, image_path=None, image_bytes=None):
+    def decode_qr_code(self, image_path=None, image_bytes=None):
         """
-        Scan QR code from an image path or image bytes.
-        Keeps same interface as before.
+        Decode QR code from image
         """
 
         try:
@@ -35,7 +34,7 @@ class QRCodeScanner:
                     "data": None
                 }
 
-            # Detect and decode QR
+            # Detect and decode
             data, bbox, _ = self.detector.detectAndDecode(image)
 
             if data:
@@ -57,3 +56,21 @@ class QRCodeScanner:
                 "message": str(e),
                 "data": None
             }
+
+    def scan_url(self, data):
+        """
+        Extract URL from decoded QR data
+        """
+
+        if not data:
+            return None
+
+        # Direct URL
+        if data.startswith(("http://", "https://")):
+            return data
+
+        # If it looks like a URL without protocol
+        if "." in data and " " not in data:
+            return f"https://{data}"
+
+        return None
