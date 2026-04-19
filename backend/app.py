@@ -33,8 +33,8 @@ CORS(
 )
 
 # Load config
+from config import Config
 app.config.from_object(Config)
-
 # Initialize JWT
 jwt = JWTManager(app)
 
