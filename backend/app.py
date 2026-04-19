@@ -25,19 +25,15 @@ app = Flask(__name__)
 print(">>> LOADED UPDATED app.py <<<")
 print(">>> FILE PATH:", __file__)
 
-CORS(app)
-
-CORS(app, resources={r"/api/*": {"origins": "*"}})
-
-# Load config
-from config import Config
-app.config.from_object(Config)
-
 CORS(
     app,
-    resources={r"/*": {"origins": ["http://localhost:5173"]}},
-    supports_credentials=True
+    resources={r"/api/*": {"origins": "*"}},
+    allow_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 )
+
+# Load config
+app.config.from_object(Config)
 
 # Initialize JWT
 jwt = JWTManager(app)
