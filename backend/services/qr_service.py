@@ -50,7 +50,7 @@ class QRCodeScanner:
             }
 
     @staticmethod
-    def scan_url(data):
+    def extract_url_from_data(data):
         """
         Extract URL from decoded QR data
         """
