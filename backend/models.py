@@ -8,8 +8,8 @@ Base = declarative_base()
 
 # Database engine
 engine = create_engine(
-    Config.SQLALCHEMY_DATABASE_URI,
-    connect_args={"sslmode": "require"}
+    DATABASE_URL,
+    pool_pre_ping=True
 )
 Session = sessionmaker(bind=engine)
 
