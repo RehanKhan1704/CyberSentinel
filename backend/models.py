@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, 
 from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 from config import Config
 import bcrypt
-
+import os
 Base = declarative_base()
 
 # Database engine
