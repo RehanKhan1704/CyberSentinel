@@ -7,7 +7,10 @@ import bcrypt
 Base = declarative_base()
 
 # Database engine
-engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
+engine = create_engine(
+    Config.SQLALCHEMY_DATABASE_URI,
+    connect_args={"sslmode": "require"}
+)
 Session = sessionmaker(bind=engine)
 
 class User(Base):
