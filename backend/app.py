@@ -103,6 +103,29 @@ def home():
 def health():
     return jsonify({"status": "healthy", "analyzer": "Hybrid ML + VirusTotal + Content"})
 
+#Database health
+from sqlalchemy import text
+from models import Session
+
+@app.route("/api/health/db", methods=["GET"])
+def db_health():
+    try:
+        session = Session()
+        result = session.execute(text("SELECT 1")).scalar()
+        session.close()
+
+        return jsonify({
+            "status": "connected",
+            "db_response": result
+        }), 200
+
+    except Exception as e:
+        print("DB CONNECTION ERROR:", e)
+        return jsonify({
+            "status": "failed",
+            "error": str(e)
+        }), 500
+
 # URL ANALYSIS
 
 @app.route("/analyze", methods=["POST"])
