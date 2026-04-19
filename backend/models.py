@@ -8,7 +8,7 @@ Base = declarative_base()
 
 # Database engine
 engine = create_engine(
-    DATABASE_URL,
+    os.getenv("DATABASE_URL"),
     pool_pre_ping=True
 )
 Session = sessionmaker(bind=engine)
