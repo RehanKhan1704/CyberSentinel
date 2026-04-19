@@ -1,31 +1,23 @@
 import cv2
-import numpy as np
 
 
 class QRCodeScanner:
-    def __init__(self):
-        self.detector = cv2.QRCodeDetector()
 
-    def decode_qr_code(self, image_path=None, image_bytes=None):
+    @staticmethod
+    def decode_qr_code(image_path):
         """
-        Decode QR code from image
+        Decode QR code from image path
         """
 
         try:
-            # Load image
-            if image_path:
-                image = cv2.imread(image_path)
-
-            elif image_bytes:
-                np_arr = np.frombuffer(image_bytes, np.uint8)
-                image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-
-            else:
+            if not image_path:
                 return {
                     "success": False,
-                    "message": "No image provided",
+                    "message": "No image path provided",
                     "data": None
                 }
+
+            image = cv2.imread(image_path)
 
             if image is None:
                 return {
@@ -34,8 +26,8 @@ class QRCodeScanner:
                     "data": None
                 }
 
-            # Detect and decode
-            data, bbox, _ = self.detector.detectAndDecode(image)
+            detector = cv2.QRCodeDetector()
+            data, bbox, _ = detector.detectAndDecode(image)
 
             if data:
                 return {
@@ -57,20 +49,32 @@ class QRCodeScanner:
                 "data": None
             }
 
-    def scan_url(self, data):
+    @staticmethod
+    def scan_url(data):
         """
         Extract URL from decoded QR data
         """
 
         if not data:
-            return None
+            return {
+                "success": False,
+                "message": "No data provided",
+                "url": None
+            }
 
         # Direct URL
         if data.startswith(("http://", "https://")):
-            return data
+            url = data
 
-        # If it looks like a URL without protocol
-        if "." in data and " " not in data:
-            return f"https://{data}"
+        # Guess URL
+        elif "." in data and " " not in data:
+            url = f"https://{data}"
 
-        return None
+        else:
+            url = None
+
+        return {
+            "success": True,
+            "message": "URL processed",
+            "url": url
+        }
